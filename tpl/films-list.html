@@ -1,0 +1,17 @@
+<h1>Top 20</h1>
+<div class="films-list" ng-controller="FilmsList">
+    <div class="film-item" ng-repeat="film in films">
+        <div><a target="_blank" href="{{film.urlIMDB}}"><img ng-src="{{::film.urlPoster}}" alt="{{film.title}}"/></a></div>
+        <h2><a target="_blank" href="{{film.urlIMDB}}">{{::film.title}}</a></h2>
+        <div><em>Year:</em> {{::film.year}}</div>
+        <div><em>Rating:</em> {{::film.rating}}</div>
+        <div><em>Countries:</em> <span ng-repeat="country in film.countries">{{::country}}{{$last ? '' : ', '}}</span></div>
+        <div><em>Genres:</em> <span ng-repeat="genre in film.genres">{{::genre}}{{$last ? '' : ', '}}</span> </div>
+        <div><em>Directors:</em> <span ng-repeat="director in film.directors"><a target="_blank" href="http://www.imdb.com/name/{{director.id}}">{{director.name}}</a>{{$last ? '' : ', '}}</span> </div>
+
+        <button class="popup" ng-click="open(film.urlPoster)">Popup</button>
+        <p class="favorites"><input  type="checkbox" id="{{film.idIMDB}}" ng-model="film.status" add-favorite="{{$index}}"><label for="{{film.idIMDB}}"><span>{{addText(film.status)}}</span></label></p>
+
+
+    </div>
+</div>
